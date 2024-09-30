@@ -1,0 +1,32 @@
+@import "./app/assets/styles/variables.css";
+@import "primeicons/primeicons.css";
+@import "./app/assets/styles/generic.scss";
+@import "./app/assets/styles/spacings.scss";
+@import "./app/assets/styles/font-styles.scss";
+
+/* Order */
+@layer reset, primeng;
+
+/* Reset CSS */
+@layer reset {
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  p,
+  a,
+  label,
+  h1,
+  h2,
+  h3,
+  h4{
+    color: var(--text-color);
+  }
+}

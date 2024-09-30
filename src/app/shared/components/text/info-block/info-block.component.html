@@ -1,0 +1,14 @@
+
+@if (data) {
+
+  <div class="info__holder g-mb-2">
+    @if (data.title) {
+      <p class="f-w-900 g-mb-1 f-s-24">{{ data.title }}</p>
+    }
+
+    @if (data.desc) {
+      <p class="g-mb-2 f-s-16">{{ data.desc }}</p>
+    }
+  </div>
+
+}

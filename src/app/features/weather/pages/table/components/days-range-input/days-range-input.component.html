@@ -1,0 +1,18 @@
+
+<div class="table__range-holder">
+  <app-input-row
+      [labelData]="inputRowData?.labelData"
+      [subTextList]="inputRowData?.subTextList ?? []"
+    >
+      @if (rangeFc) {
+        <p-inputNumber
+          id="pastDays"
+          [formControl]="rangeFc"
+          [(ngModel)]="displayValue"
+          styleClass="g-mb-2 g-w-100"
+          class="g-w-100" suffix=" days"
+        />
+        <p-slider [min]="sliderMin" [max]="sliderMax" [formControl]="rangeFc" [(ngModel)]="displayValue" class="g-w-100 g-block g-mb-2" />
+      }
+    </app-input-row>
+</div>

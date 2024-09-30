@@ -1,0 +1,9 @@
+
+@if (item) {
+  <a [routerLink]="item.route" class="p-menuitem-link">
+    <span [class]="item.icon"></span>
+    <span class="g-ml-1">
+        {{ item.label }}
+    </span>
+  </a>
+}

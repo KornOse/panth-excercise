@@ -1,0 +1,65 @@
+
+<app-info-block
+  [data]="state.infoData"
+></app-info-block>
+
+<div class="calc__holder">
+
+  <p class="f-w-500 g-mb-1">Heat index</p>
+  <div class="calc__value-display">
+    <div class="display__value g-flex g-flex--a-c g-flex--j-c">
+      @if (!state.formInvalid()) {
+        <p class="f-s-36 f-w-900 f-l-h-1">{{ state.currentHeatIndex() | number:'1.0-2' }}</p>
+      } @else {
+        <p class="f-s-36 f-w-900 f-l-h-1">{{ '-' }}</p>
+      }
+      <p class="f-s-24 f-w-900 f-l-h-1 g-desc">{{ state.currentUnit().shortName }}</p>
+    </div>
+    <div class="display__danger" [heatDanger]="state.currentFahHeatIndex()"></div>
+  </div>
+
+  <form [formGroup]="state.formGroup" class="g-w-100">
+    <app-input-row
+      [labelData]="{ id: 'temperature', label: 'Temperature' }"
+      [subTextList]="[
+        { key: 'Min', value: state.currentUnit().min + ' ' + state.currentUnit().shortName }
+      ]"
+    >
+      <p-inputNumber
+        placeholder="Temperature"
+        inputId="temperature"
+        formControlName="temperature"
+        class="g-w-100"
+        styleClass="g-w-100"
+        [suffix]="' ' + state.currentUnit().shortName"
+      />
+    </app-input-row>
+
+    <app-input-row
+      [labelData]="{ id: 'relativeHumidity', label: 'Relative humidity' }"
+    >
+      <p-inputNumber
+        placeholder="Relative humidity"
+        inputId="relativeHumidity"
+        formControlName="relativeHumidity"
+        suffix=" %"
+        class="g-w-100"
+        styleClass="g-w-100"
+      />
+    </app-input-row>
+
+    <app-input-row
+      [labelData]="{ label: 'Temperature unit' }"
+    >
+      <p-dropdown
+        formControlName="selectedUnit"
+        [options]="state.tempUnits"
+        optionLabel="name"
+        placeholder="Select a Unit"
+        class="g-w-100"
+        styleClass="g-w-100"
+      />
+    </app-input-row>
+  </form>
+
+</div>

@@ -1,0 +1,13 @@
+
+<div class="input__row g-my-2">
+
+  @if (labelData; as data) {
+    <label class="g-mb-1 f-w-500 input__label" [for]="data?.id">{{ data.label }}</label>
+  }
+  <ng-content />
+
+  @for (item of subTextList; track $index) {
+    <p class="f-s-12 input__sub-text g-mt-1"><strong>{{ item.key }}:</strong> {{ item.value }}</p>
+  }
+
+</div>

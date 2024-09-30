@@ -1,0 +1,45 @@
+
+<app-info-block
+  [data]="infoData"
+></app-info-block>
+
+<app-days-range-input
+  [rangeFc]="daysRangeFc"
+  [displayValue]="daysValue"
+  [inputRowData]="inputRowData"
+  [sliderMax]="dateRangeMax"
+></app-days-range-input>
+
+<p-table
+    [columns]="tableColumns()"
+    [value]="tableData()"
+    [rows]="10"
+    [paginator]="true"
+    (onPage)="pageChange($event)"
+    [first]="firstPage()"
+    >
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                @for (col of columns; track $index) {
+                  @if (!col?.isSortable) {
+                    <th style="width: 20%;">
+                    {{col.header}}
+                    </th>
+                  } @else {
+                    <th style="width: 20%;" [pSortableColumn]="col.field">
+                      {{col.header}} <p-sortIcon [field]="col.field" />
+                    </th>
+                  }
+                }
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr style="height:46px">
+                @for (col of columns; track $index) {
+                  <td>
+                    {{rowData[col.field]}}
+                  </td>
+                }
+            </tr>
+        </ng-template>
+</p-table>
